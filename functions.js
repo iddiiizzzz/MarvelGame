@@ -35,7 +35,13 @@ async function randomizeCharacter() {
 
   guessedCharacterFacts = null;
   correctFacts.clear();
-  falseFacts.clear();
+  falseFactsMap = {};
+  document.getElementById("falseGuessesList").innerHTML = "";
+  closestBornAfter = null;
+  closestBornBefore = null;
+
+
+
 
   // Clear the displayed results
   document.getElementById("result").innerHTML = "<p>Done randomizing</p>";
