@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Marvel Character</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body> 
+
+    <!-- randomize character --> 
+
+    <div class="TextCenter">
+
+        <h2>Randomize character</h2>
+
+        <!-- <button type="button" onclick="randomizeCharacter(), showCharacterName()">Randomize a Character</button> -->
+        
+        <button type="button" onclick="randomizeCharacter()">Randomize a Character</button>
+        <button type="button" onclick="showCharacterName()">Show Character Name</button>
+
+        <div id="result"></div>
+
+    </div>
+
+ 
+    <!-- search bar -->
+
+    <div class="TextCenter">
+        <h1>Guess the Marvel Character</h1>
+
+
+        <input type="text" id="searchInput" list="characterSuggestions" placeholder="Search name..." />
+        <datalist id="characterSuggestions"></datalist>
+        <button onclick="searchData()">Search</button>
+
+
+        <!-- Name -->
+        <div class="rectangleCorrect" style="display: none;">
+            <div id="correctNameResult"></div>
+        </div>
+        <div class="rectangleWrong" style="display: none;">
+            <div id="wrongNameResult"></div>
+        </div>
+
+        <div class="centerContainer">
+            <div class="resultGrid">
+                <!-- Gender -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctGenderResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongGenderResult"></div>
+                </div>
+                
+                <!-- Being -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctBeingResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongBeingResult"></div>
+                </div>
+
+            
+
+                <!-- Hero Status -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctHeroStatusResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongHeroStatusResult"></div>
+                </div>
+                
+                <!-- Phase -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctPhaseResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongPhaseResult"></div>
+                </div>
+
+                <!-- Power Origin -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctPowerOriginResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongPowerOriginResult"></div>
+                </div>
+
+                
+
+                <!-- Birth Year -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctBirthYearResult"></div>
+                </div>
+
+
+                <!-- Age -->
+                <!-- <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctAgeResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongAgeResult"></div>
+                </div> --> 
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongBirthYearResult"></div> 
+                </div>
+            </div>
+        </div> 
+
+    </div> 
+
+
+    <div id="correctGuessesColumn" style="position: absolute; right: 50px; top: 100px;">
+        <h3>Correct Guesses</h3>
+        <ul id="correctGuessesList"></ul>
+    </div>
+      
+      
+
+    <p><b>Name:</b> Their most common name, could be both human name or made up names. </p>
+    <p><b>Gender:</b> Male or female. </p>
+    <p><b>Being:</b> What type of being they are. Could be human, animal, alien or god.</p>
+    <!-- <p><b>Age:</b> The age the character had at first appearance in the MCU. </p> -->
+    <p><b>Hero Status:</b> The overall consensus if they are a hero, villan, anti-hero, agent or side character.</p>
+    <p><b>Phase:</b> The phase  where they had their first appearance in the MCU.</p>
+    <p><b>Power Origin:</b> If they have powers and where they got them from. These could be biological, technical, science, or no powers.</p>
+    <p><b>Birth Year</b> The year they are born, could also be unknown. Some years are just approximate</p>
+
+    <script src="functions.js"></script>
+</body>
+
+</html>
