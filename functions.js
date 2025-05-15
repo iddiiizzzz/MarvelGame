@@ -4,9 +4,10 @@
 let currentCharacter = null;
 let guessedCharacterFacts = null;
 let correctFacts = new Set();
+let falseFactsMap = {}; 
 
 
-// Randomize a character
+
 async function randomizeCharacter() {
   
   const res = await fetch("marvelDataBase.csv");
@@ -15,7 +16,7 @@ async function randomizeCharacter() {
   const lines = text.trim().split("\n");
   const headers = lines[0].split(",");
   
-  const randomIdx = Math.floor(Math.random() * (lines.length - 1)) + 1; // Skip header
+  const randomIdx = Math.floor(Math.random() * (lines.length - 1)) + 1;
   const randomizedRow = lines[randomIdx].split(",");
 
   currentCharacter = {
@@ -34,6 +35,7 @@ async function randomizeCharacter() {
 
   guessedCharacterFacts = null;
   correctFacts.clear();
+  falseFacts.clear();
 
   // Clear the displayed results
   document.getElementById("result").innerHTML = "<p>Done randomizing</p>";
@@ -47,7 +49,7 @@ async function randomizeCharacter() {
 }
 
 
-// Show the randomized character name
+
 function showCharacterName() {
 
   if (currentCharacter) {
@@ -81,7 +83,7 @@ async function loadCharacterNames() {
   });
 }
 
-// Call this function once when the page loads
+
 window.onload = function () {
   loadCharacterNames();
 
@@ -95,7 +97,6 @@ window.onload = function () {
 
 
 
-// Guess a charachter and this function finds the facts about it
 async function searchData() {
   const input = document.getElementById("searchInput").value.toLowerCase();
   const res = await fetch("marvelDataBase.csv");
@@ -145,6 +146,7 @@ async function searchData() {
         } else {
           document.getElementById("wrongGenderResult").innerHTML = `<p><strong>${headers[1]}:</strong> ${guessedCharacterFacts.guessedGender}</p>`; 
           document.querySelectorAll(".rectangleWrong")[1].style.display = "flex";
+          saveFalseFact(headers[1], guessedCharacterFacts.guessedGender)
       }
 
       // Being
@@ -155,6 +157,7 @@ async function searchData() {
         } else {
           document.getElementById("wrongBeingResult").innerHTML = `<p><strong>${headers[2]}:</strong> ${guessedCharacterFacts.guessedBeing}</p>`; 
           document.querySelectorAll(".rectangleWrong")[2].style.display = "flex";
+          saveFalseFact(headers[2], guessedCharacterFacts.guessedBeing)
       }
 
           
@@ -167,6 +170,7 @@ async function searchData() {
       } else {
         document.getElementById("wrongHeroStatusResult").innerHTML = `<p><strong>${headers[3]}:</strong> ${guessedCharacterFacts.guessedHeroStatus}</p>`; 
         document.querySelectorAll(".rectangleWrong")[3].style.display = "flex";
+        saveFalseFact(headers[3], guessedCharacterFacts.guessedHeroStatus)
       }
 
       // Phase
@@ -177,6 +181,7 @@ async function searchData() {
       } else {
         document.getElementById("wrongPhaseResult").innerHTML = `<p><strong>${headers[4]}:</strong> ${guessedCharacterFacts.guessedPhase}</p>`; 
         document.querySelectorAll(".rectangleWrong")[4].style.display = "flex";
+        saveFalseFact(headers[4], guessedCharacterFacts.guessedPhase)
       }
 
 
@@ -188,6 +193,7 @@ async function searchData() {
       } else {
         document.getElementById("wrongPowerOriginResult").innerHTML = `<p><strong>${headers[5]}:</strong> ${guessedCharacterFacts.guessedPowerOrigin}</p>`; 
         document.querySelectorAll(".rectangleWrong")[5].style.display = "flex";
+        saveFalseFact(headers[5], guessedCharacterFacts.guessedPowerOrigin)
       }
 
 
@@ -210,65 +216,20 @@ async function searchData() {
         document.getElementById("correctBirthYearResult").innerHTML = `<p><strong>${headers[6]}:</strong> ${guessedCharacterFacts.guessedBirthYear}</p>`;
         document.querySelectorAll(".rectangleCorrect")[6].style.display = "flex"; 
         saveCorrectFact(headers[6], guessedCharacterFacts.guessedBirthYear);
-      } else if (parseInt(currentCharacter.birthYear) < parseInt(guessedCharacterFacts.guessedBirthYear)) {
-        document.getElementById("wrongBirthYearResult").innerHTML = `<p><strong>${headers[6]}:</strong> < ${guessedCharacterFacts.guessedBirthYear}</p>`; 
+      } else if (parseInt(currentCharacter.birthYear) < parseInt(guessedCharacterFacts.guessedBirthYear)) { 
+        document.getElementById("wrongBirthYearResult").innerHTML = `<p><strong>${headers[6]}:</strong> Born before ${guessedCharacterFacts.guessedBirthYear}</p>`; 
         document.querySelectorAll(".rectangleWrong")[6].style.display = "flex";
       } else if (parseInt(currentCharacter.birthYear) > parseInt(guessedCharacterFacts.guessedBirthYear)) {
-        document.getElementById("wrongBirthYearResult").innerHTML = `<p><strong>${headers[6]}:</strong> > ${guessedCharacterFacts.guessedBirthYear}</p>`; 
+        document.getElementById("wrongBirthYearResult").innerHTML = `<p><strong>${headers[6]}:</strong> Born after ${guessedCharacterFacts.guessedBirthYear}</p>`; 
         document.querySelectorAll(".rectangleWrong")[6].style.display = "flex";
       }
 
-
-      // Age
-      // if (currentCharacter && currentCharacter.age === guessedCharacterFacts.guessedAge) {
-      //   document.getElementById("correctAgeResult").innerHTML = `<p><strong>${headers[7]}:</strong> ${guessedCharacterFacts.guessedAge}</p>`;
-      //   document.querySelectorAll(".rectangleCorrect")[7].style.display = "flex"; 
-      // } else if (currentCharacter.age < guessedCharacterFacts.guessedAge) {
-      //   document.getElementById("wrongAgeResult").innerHTML = `<p><strong>${headers[7]}:</strong> < ${guessedCharacterFacts.guessedAge}</p>`; 
-      //   document.querySelectorAll(".rectangleWrong")[7].style.display = "flex";
-      // } else if (currentCharacter.age > guessedCharacterFacts.guessedAge) {
-      //   document.getElementById("wrongAgeResult").innerHTML = `<p><strong>${headers[7]}:</strong> > ${guessedCharacterFacts.guessedAge}</p>`; 
-      //   document.querySelectorAll(".rectangleWrong")[7].style.display = "flex";
-      // } else if (currentCharacter.age === "Unknown") {
-      //   document.getElementById("wrongAgeResult").innerHTML = `<p><strong>${headers[7]}:</strong> ? ${guessedCharacterFacts.guessedAge} ?</p>`; 
-      //   document.querySelectorAll(".rectangleWrong")[7].style.display = "flex";
-      // }
-
-
-
-      // // Age
-      // if (currentCharacter.age === "Unknown" || guessedCharacterFacts.guessedAge === "Unknown") {
-      //   document.getElementById("correctAgeResult").innerHTML = `<p><strong>${headers[6]}:</strong> ${guessedCharacterFacts.guessedAge}</p>`;
-      //   document.querySelectorAll(".rectangleCorrect")[6].style.display = "flex";
-
-      //   if (currentCharacter.age === guessedCharacterFacts.guessedAge) {
-      //     document.getElementById("correctAgeResult").innerHTML = `<p><strong>${headers[6]}:</strong> ${guessedCharacterFacts.guessedAge}</p>`;
-      //     document.querySelectorAll(".rectangleCorrect")[6].style.display = "flex";
-      //   } else {
-      //     document.getElementById("wrongAgeResult").innerHTML = `<p><strong>${headers[6]}:</strong> ? ${guessedCharacterFacts.guessedAge} ?</p>`;
-      //     document.querySelectorAll(".rectangleWrong")[6].style.display = "flex";
-      //   }
-      // } else {
-      //   const actualAge = parseInt(currentCharacter.age.trim());
-      //   const guessedAge = parseInt(guessedCharacterFacts.guessedAge.trim());
-        
-      //   if (actualAge === guessedAge) {
-      //     document.getElementById("correctAgeResult").innerHTML = `<p><strong>${headers[6]}:</strong> ${guessedCharacterFacts.guessedAge}</p>`;
-      //     document.querySelectorAll(".rectangleCorrect")[6].style.display = "flex";
-      //   } else if (actualAge < guessedAge) {
-      //     document.getElementById("wrongAgeResult").innerHTML = `<p><strong>${headers[6]}:</strong> < ${guessedCharacterFacts.guessedAge}</p>`;
-      //     document.querySelectorAll(".rectangleWrong")[6].style.display = "flex";
-      //   } else {
-      //     document.getElementById("wrongAgeResult").innerHTML = `<p><strong>${headers[6]}:</strong> > ${guessedCharacterFacts.guessedAge}</p>`;
-      //     document.querySelectorAll(".rectangleWrong")[6].style.display = "flex";
-      // }
-    // }
-
-
-
-
       
-
+      if (!isNaN(parseInt(guessedCharacterFacts.guessedBirthYear))) {
+        updateClosestBirthYears(guessedCharacterFacts.guessedBirthYear, currentCharacter.birthYear);
+        displayClosestBirthYears();
+      }
+      
       foundCharacter = true;
       break;
     }
@@ -293,5 +254,78 @@ function saveCorrectFact(label, value) {
   }
 }
 
+function saveFalseFact(label, value) {
+  if (!falseFactsMap[label]) {
+    falseFactsMap[label] = new Set();
+  }
 
+  if (!falseFactsMap[label].has(value)) {
+    falseFactsMap[label].add(value);
+    updateFalseGuessesList();
+  }
+}
+
+
+function updateFalseGuessesList() {
+  const list = document.getElementById("falseGuessesList");
+  list.innerHTML = ""; // Clear previous entries
+
+  // Loop through categories
+  for (const category in falseFactsMap) {
+    const values = Array.from(falseFactsMap[category]).join(", "); // Convert Set to string
+
+    // Create a new list item
+    const li = document.createElement("li");
+    li.textContent = `${category}: ${values}`;
+    list.appendChild(li);
+  }
+}
+
+
+
+
+let closestBornAfter = null;
+let closestBornBefore = null;
+
+function updateClosestBirthYears(guessedYear, actualYear) {
+  const guessedNum = parseInt(guessedYear);
+  const actualNum = parseInt(actualYear);
+
+  if (guessedNum !== "Unknown" && actualNum !== "Unknown") {
+    if (guessedNum < actualNum) {
+      if (closestBornAfter === null || guessedNum > closestBornAfter) { // born after
+        closestBornAfter = guessedNum;
+      }
+    } else if (guessedNum > actualNum) {
+      if (closestBornBefore === null || guessedNum < closestBornBefore) {
+        closestBornBefore = guessedNum;
+      }
+    }
+  }
+}
+
+
+function displayClosestBirthYears() {
+  const list = document.getElementById("correctGuessesList");
+
+  // Remove previous closest before/after entries to avoid duplicates
+  document.getElementById("closestBornAfterItem")?.remove();
+  document.getElementById("closestBornBeforeItem")?.remove();
+
+  // Add closest before if available
+  if (closestBornAfter) {
+    const liBefore = document.createElement("li");
+    liBefore.id = "closestBornAfterItem";
+    liBefore.textContent = `Born after: ${closestBornAfter}`;
+    list.appendChild(liBefore);
+  }
+
+  // Add closest after if available
+  if (closestBornBefore) {
+    const liAfter = document.createElement("li");
+    liAfter.id = "closestBornBeforeItem";
+    liAfter.textContent = `Born before: ${closestBornBefore}`;
+    list.appendChild(liAfter);
+  }
+}
 
