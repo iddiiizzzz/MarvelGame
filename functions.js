@@ -31,6 +31,19 @@ async function randomizeCharacter() {
 
   document.getElementById("result").innerHTML = "<p>Done randomizing</p>";
 
+
+  guessedCharacterFacts = null;
+  correctFacts.clear();
+
+  // Clear the displayed results
+  document.getElementById("result").innerHTML = "<p>Done randomizing</p>";
+  document.getElementById("searchInput").value = ""; // Clear input field
+
+  document.getElementById("correctGuessesList").innerHTML = ""; // Clear correct guesses list
+
+  // Hide previous result boxes
+  document.querySelectorAll(".rectangleCorrect").forEach(el => el.style.display = "none");
+  document.querySelectorAll(".rectangleWrong").forEach(el => el.style.display = "none");
 }
 
 
@@ -279,3 +292,6 @@ function saveCorrectFact(label, value) {
     document.getElementById("correctGuessesList").appendChild(li);
   }
 }
+
+
+
