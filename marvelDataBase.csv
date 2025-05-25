@@ -1,58 +1,87 @@
-Character,Gender,Being,Hero Status,Phase,Power Origin,Birth Year,Unnamed: 7,Unnamed: 8,Unnamed: 9,Unnamed: 10,Age
-Captain America / Steve Rodgers,Male,Human,Hero,1,Science,1918,,,,,27
-Peggy Carter,Female,Human,Agent,1,No powers,1921,,,,,23
-Winter Soldier / Bucky Barnes,Male,Human,Hero,1,Science,1917,,,,,26
-Red Skull,Male,Human,Villan,1,Science,Unknown,,,,,Unknown
-Howard Stark,Male,Human,Side character,1,No powers,1917,,,,,3
-Iron Man / Tony Stark,Male,Human,Hero,1,Technical,1970,,,,,4
-Pepper Potts,Female,Human,Side character,1,Technical,1974,,,,,5
-Happy Hogan,Male,Human,Side character,1,No powers,1977,,,,,5
-Nick Fury,Male,Human,Agent,1,No powers,1950,,,,,3
-Hulk / Bruce Banner,Male,Human,Hero,1,Science,1969,,,,,35
-"War Machine / James ""Rhodey"" Rhodes",Male,Human,Hero,1,Technical,1968,,,,,40
-Black Widow / Natasha Romanoff,Female,Human,Hero,1,No powers,1984,,,,,26
-Phil Coulson,Male,Human,Agent,1,No powers,1964,,,,,3
-Thor,Male,God,Hero,1,Biological,500,,,,,3
-Jane Foster,Female,Human,Side character,1,No powers,Unknown,,,,,3
-Loke,Male,God,Antihero,1,Biological,947,,,,,3
-Erik Selvig,Male,Human,Side character,1,No powers,1951,,,,,3
-Hawkeye / Clint Barton,Male,Human,Hero,1,No powers,1970,,,,,41
-Hela,Female,God,Villan,3,Biological,-3000,,,,,
-Odin,Male,God,Side character,1,Biological,-3000,,,,,3
-Heimdall,Male,God,Side character,1,Biological,-1000,,,,,3
-Maria Hill,Female,Human,Agent,1,No powers,1982,,,,,15
-Thanos,Male,Alien,Villan,1,No powers,1000,,,,,35
-Rocket,Male,Animal,Hero,2,Science,Unknown,,,,,
-Gamora,Female,Alien,Hero,2,No Powers,1979,,,,,
-Star-Lord / Peter Quill,Male,Human,Hero,2,Technical,1980,,,J.A.R.V.I.S / Vision,,
-Drax,Male,Alien,Hero,2,No powers,Unknown,,,Ultron,,
-Groot,Male,Alien,Hero,2,Biological,Unknown,,,Friday,,
-Ronan,Male,Alien,Villan,2,Biological,Unknown,,,Karen,,
-Yondu,Male,Alien,Side character,2,Technical,1950,,,,,
-Nebula,Female,Alien,Hero,2,Technical,Unknown,,,,,
-Darcy Lewis,Female,Human,Side character,2,No powers,1988,,,,,
-Falcon / Sam Wilson,Male,Human,Hero,2,Technical,1978,,,,,
-Quicksilver / Pietro Maximoff,Male,Human,Hero,2,Science,1989,,,,,
-Scarlet Witch / Wanda Maximoff,Female,Human,Hero,2,Science,1989,,,,,
-Antman / Scott Lang,Male,Human,Hero,2,Technical,Unknown,,,,,
-Hank Pym,Male,Human,Side character,2,No powers,1945,,,,,
-Wasp / Hope van Dyne,Female,Human,Hero,2,Technical,1980,,,,,
-Cassie Lang,Female,Human,Side character,2,No powers,2008,,,,,
-Black Panther / T'Challa,Male,Human,Hero,3,Technical,1983,,,,,
-Spider-Man / Peter Parker,Male,Human,Hero,3,Science,2001,,,,,
-Doctor Strange / Dr. Stephen Strange,Male,Human,Hero,3,Biological,Unknown,,,,,
-Wong,Male,Human,Side character,3,Biological,Unknown,,,,,
-The Ancient One,Female,Human,Side character,3,Biological,1316,,,,,
-Mantis,Female,Alien,Hero,3,Biological,Unknown,,,,,
-Ant May / May Parker,Female,Human,Side character,3,No powers,1964,,,,,
-"Michelle ""MJ"" Jones",Female,Human,Side character,3,No powers,2001,,,,,
-Ned Leeds,Male,Human,Side character,3,No powers,2001,,,,,
-Valkyrie,Female,God,Side character,3,Biological,-2000,,,,,
-Grandmaster,Male,Alien,Side character,3,No powers,-14000000,,,,,
-Korg,Male,Alien,Side character,3,No powers,Unknown,,,,,
-Captain Marvel / Carol Danvers,Female,Human,Hero,3,Science,1965,,,,,
-Talos,Male,Alien,Side character,3,Biological,1890,,,,,
-Monica Rambeau,Female,Human,Side character,3,No powers,1984,,,,,
-Morgan Stark,Female,Human,Side character,3,No powers,2019,,,,,
-Mysterio / Quentin Beck,Male,Human,Villan,3,Technical,1994,,,,,
-Black Panther 2 / Shuri,Female,Human,Side character,3,Technical,1998,,,,,
+Character,Gender,Being,Hero Status,Phase,Power Origin,Birth Year,Colour,Unnamed: 8,Unnamed: 9
+Captain America / Steve Rodgers,Male,Human,Hero,1,Science,1918,Human,,
+Peggy Carter,Female,Human,Agent,1,No powers,1921,Human,,
+Winter Soldier / Bucky Barnes,Male,Human,Hero,1,Science,1917,Human,,
+Red Skull,Male,Human,Villan,1,Science,Unknown,Red,,
+Howard Stark,Male,Human,Side character,1,No powers,1917,Human,,
+Iron Man / Tony Stark,Male,Human,Hero,1,Technical,1970,Human,,
+Pepper Potts,Female,Human,Side character,1,Technical,1974,Human,,
+Happy Hogan,Male,Human,Side character,1,No powers,1977,Human,,
+Nick Fury,Male,Human,Agent,1,No powers,1950,Human,,
+Hulk / Bruce Banner,Male,Human,Hero,1,Science,1969,Green,,
+"War Machine / James ""Rhodey"" Rhodes",Male,Human,Hero,1,Technical,1968,Human,,
+Black Widow / Natasha Romanoff,Female,Human,Hero,1,No powers,1984,Human,,
+Phil Coulson,Male,Human,Agent,1,No powers,1964,Human,,
+Thor,Male,God,Hero,1,Biological,500,Human,,
+Jane Foster,Female,Human,Side character,1,No powers,Unknown,Human,,
+Loke,Male,God,Antihero,1,Biological,947,Human,,
+Erik Selvig,Male,Human,Side character,1,No powers,1951,Human,,
+Hawkeye / Clint Barton,Male,Human,Hero,1,No powers,1970,Human,,
+Hela,Female,God,Villan,3,Biological,-3000,Human,,
+Odin,Male,God,Side character,1,Biological,-3000,Human,,
+Heimdall,Male,God,Side character,1,Biological,-1000,Human,,
+Maria Hill,Female,Human,Agent,1,No powers,1982,Human,,
+Thanos,Male,Alien,Villan,1,No powers,1000,Purple,,
+Rocket,Male,Animal,Hero,2,Science,Unknown,Brown,,
+Gamora,Female,Alien,Hero,2,No Powers,1979,Green,,
+Star-Lord / Peter Quill,Male,Human,Hero,2,Technical,1980,Human,,J.A.R.V.I.S / Vision
+Drax,Male,Alien,Hero,2,No powers,Unknown,Grey,,Ultron
+Groot,Male,Alien,Hero,2,Biological,Unknown,Brown,,Friday
+Ronan,Male,Alien,Villan,2,Biological,Unknown,Blue,,Karen
+Yondu,Male,Alien,Side character,2,Technical,1950,Blue,,
+Nebula,Female,Alien,Hero,2,Technical,Unknown,Blue,,
+Darcy Lewis,Female,Human,Side character,2,No powers,1988,Human,,
+Falcon / Sam Wilson,Male,Human,Hero,2,Technical,1978,Human,,
+Quicksilver / Pietro Maximoff,Male,Human,Hero,2,Science,1989,Human,,
+Scarlet Witch / Wanda Maximoff,Female,Human,Hero,2,Science,1989,Human,,
+Antman / Scott Lang,Male,Human,Hero,2,Technical,Unknown,Human,,
+Hank Pym,Male,Human,Side character,2,No powers,1945,Human,,
+Wasp / Hope van Dyne,Female,Human,Hero,2,Technical,1980,Human,,
+Cassie Lang,Female,Human,Side character,2,No powers,2008,Human,,
+Black Panther / T'Challa,Male,Human,Hero,3,Technical,1983,Human,,
+Spider-Man / Peter Parker,Male,Human,Hero,3,Science,2001,Human,,
+Doctor Strange / Dr. Stephen Strange,Male,Human,Hero,3,Biological,Unknown,Human,,
+Wong,Male,Human,Side character,3,Biological,Unknown,Human,,
+The Ancient One,Female,Human,Side character,3,Biological,1316,Human,,
+Mantis,Female,Alien,Hero,3,Biological,Unknown,Human,,
+Aunt May / May Parker,Female,Human,Side character,3,No powers,1964,Human,,
+"Michelle ""MJ"" Jones",Female,Human,Side character,3,No powers,2001,Human,,
+Ned Leeds,Male,Human,Side character,3,No powers,2001,Human,,
+Valkyrie,Female,God,Side character,3,Biological,-2000,Human,,
+Grandmaster,Male,Alien,Side character,3,No powers,-14000000,Human,,
+Korg,Male,Alien,Side character,3,No powers,Unknown,Grey,,
+Captain Marvel / Carol Danvers,Female,Human,Hero,3,Science,1965,Human,,
+Talos,Male,Alien,Side character,3,Biological,1890,Green,,
+Monica Rambeau,Female,Human,Side character,3,No powers,1984,Human,,
+Morgan Stark,Female,Human,Side character,3,No powers,2019,Human,,
+Mysterio / Quentin Beck,Male,Human,Villan,3,Technical,1994,Human,,
+Black Panther 2 / Shuri,Female,Human,Side character,3,Technical,1998,Human,,
+Yelena Belova,Female,Human,Side character,4,No powers,1988,Human,,
+Shang-Chi,Male,Human,Hero,4,Science,1999,Human,,
+Green Goblin / Norman Osborn,Male,Human,Villan,4,Science,Unknown,Human,,
+Doctor Octopus / Dr. Otto Octavius,Male,Human,Villan,4,Science,1955,Human,,
+Electro / Max Dillon,Male,Human,Villan,4,Science,Unknown,Human,,
+Sandman / Flint Marko,Male,Human,Villan,4,Science,Unknown,Human,,
+Lizard / Dr. Curt Connors,Male,Human,Villan,4,Science,Unknown,Human,,
+America Chavez,Female,Human,Hero,4,Science,2006,Human,,
+Tommy Maximoff,Male,Human,Side character,4,Biological,2019,Human,,
+Billy Maximoff,Male,Human,Side character,4,Biological,2019,Human,,
+Agatha Harkness / Agnes,Female,Human,Villan,4,Biological,1675,Human,,
+Death / Rio Vidal,Female,God,Villan,4,Biological,Unknown,Human,,
+Wolverine / Logan,Male,Human,Antihero,X-men,Biological,1832,Human,,
+Professor X / Charles Xavier,Male,Human,Hero,X-men,Biological,1932,Human,,
+Magneto / Erik Lehnsherr,Male,Human,Antihero,X-men,Biological,1930,Human,,
+Storm / Ororo Munroe,Female,Human,Hero,X-men,Biological,1964,Human,,
+Pheonix / Jean Grey,Female,Human,Hero,X-men,Biological,1984,Human,,
+Cyclops / Scott Summers,Male,Human,Hero,X-men,Biological,1977,Human,,
+Rouge / Marie D'Ancanto,Female,Human,Hero,X-men,Biological,Unknown,Human,,
+Mystique / Raven Darkholme,Female,Human,Antihero,X-men,Biological,1873,Blue,,
+William Stryker,Male,Human,Villan,X-men,No powers,1950,Human,,
+Nightcrawler / Kurt Wagner,Male,Human,Hero,X-men,Biological,Unknown,Blue,,
+"Beast / Dr. Henry "" Hank"" McCoy",Male,Human,Hero,X-men,Biological,Unknown,Blue,,
+Sabertooth / Victor Creed,Male,Human,Villan,X-men,Biological,1820,Human,,
+Deadpool / Wade Wilson,Male,Human,Antihero,X-men,Science,1973,Human,,
+Blind Al,Female,Human,Side character,X-men,No powers,Unknown,Human,,
+Apocalypse / En Sabah Nur,Male,God,Villan,X-men,Biological,-3000,Blue,,
+X-23 / Laura Kinney,Female,Human,Side character,X-men,Science,Unknown,Human,,
+Quicksilver / Peter Maximoff,Male,Human,Hero,X-men,Biological,1950,Human,,
