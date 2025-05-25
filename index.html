@@ -9,8 +9,39 @@
 </head>
 
 <body> 
+    <div class="fixedCanvas">
 
-    <img src="MarvelLogo.png" width="214" height="100" style="position: absolute; left: 40px; top: 40px;">
+    <!-- <img src="MarvelLogo.png" width="214" height="100" style="position: absolute; left: 40px; top: 40px;"> -->
+
+    <!-- Choose categories -->
+
+
+    <fieldset style="position: absolute; left: 40px; top: 200px;">
+        <button onclick="choosePhase()">Apply Phase Filter</button>
+        <legend>Choose Phase</legend>
+        <div>
+            <input type="checkbox" id="Phase1" name="interest" value="Phase1" checked/>
+            <label for="Phase1">Phase 1</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Phase2" name="interest" value="Phase2" checked/>
+            <label for="Phase2">Phase 2</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Phase3" name="interest" value="Phase3" checked/>
+            <label for="Phase3">Phase 3</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Phase4" name="interest" value="Phase4" checked/>
+            <label for="Phase4">Phase 4</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Xmen" name="interest" value="Xmen" checked/>
+            <label for="Xmen">X-Men</label>
+        </div>
+    </fieldset>
+    
+
 
     <!-- randomize character --> 
 
@@ -34,7 +65,7 @@
         <h1>Guess the Marvel Character</h1>
 
 
-        <input type="text" id="searchInput" list="characterSuggestions" placeholder="Search name..." />
+        <input type="text" id="searchInput" list="characterSuggestions" placeholder="Search name..." autocomplete="off" />
         <datalist id="characterSuggestions"></datalist>
         <button onclick="searchData()">Search</button>
 
@@ -105,25 +136,40 @@
                 
                 <div class="rectangleWrong" style="display: none;">
                     <div id="wrongBirthYearResult"></div> 
-
                 </div>
+
+
+                <!-- Colour -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctColourResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongColourResult"></div>
+                </div>
+
             </div>
         </div> 
+
+        <div class="correct-guesses-box">
+            <h3>Correct facts</h3>
+            <ul id="correctGuessesList"></ul>
+        
+            <h3>False facts</h3>
+            <ul id="falseGuessesList"></ul>
+            <p id="closestBornAfterItem"></p>
+            <p id="closestBornBeforeItem"></p>
+        </div>
 
     </div> 
 
 
-    <div id="correctGuessesColumn" style="position: absolute; right: 50px; top: 100px;">
-        <h3>Correct facts</h3>
-        <ul id="correctGuessesList"></ul>
 
-        <h3>False facts</h3>
-        <ul id="falseGuessesList"></ul>
-        <p id="closestBornAfterItem"></p>
-        <p id="closestBornBeforeItem"></p>
-    </div>
     
       
+
+
+    
 
     <p><b>Gender:</b> Male, female. </p>
     <p><b>Being:</b> Human, animal, alien, god.</p>
@@ -131,11 +177,12 @@
     <p><b>Phase:</b> When they had their first appearance in the MCU.</p>
     <p><b>Power Origin:</b> Biological, technical, science, no powers.</p>
     <p><b>Birth Year</b> The year they are born, could also be unknown. Some years are just approximate.</p>
+    <p><b>Colour</b> The skin colour, Human, Blue, Green etc.</p>
 
     <script src="functions.js"></script>
+</div>
 </body>
 
 </html>
 
 
-<!--  Ctrl + Shift + R för att uppdatera hemsidan efter push till github -->
