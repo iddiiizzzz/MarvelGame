@@ -5,19 +5,66 @@ let currentCharacter = null;
 let guessedCharacterFacts = null;
 let correctFacts = new Set();
 let falseFactsMap = {}; 
+let filteredDataSet = [];
 
 
 
-async function randomizeCharacter() {
-  
+async function choosePhase () {
   const res = await fetch("marvelDataBase.csv");
   // const res = await fetch("testData.csv");
   const text = await res.text();
   const lines = text.trim().split("\n");
   const headers = lines[0].split(",");
+  const dataRows = lines.slice(1);
+
   
-  const randomIdx = Math.floor(Math.random() * (lines.length - 1)) + 1;
-  const randomizedRow = lines[randomIdx].split(",");
+  const selectedPhases = [];
+
+  if (document.getElementById("Phase1").checked) selectedPhases.push("1");
+  if (document.getElementById("Phase2").checked) selectedPhases.push("2");
+  if (document.getElementById("Phase3").checked) selectedPhases.push("3");
+  if (document.getElementById("Phase4").checked) selectedPhases.push("4");
+  if (document.getElementById("Xmen").checked) selectedPhases.push("X-men");
+
+
+
+  filteredDataSet = dataRows.filter(row => {
+    const columns = row.split(",");
+    const characterPhase = columns[4]; // Assuming phase is in column index 4
+    return selectedPhases.includes(characterPhase);
+  });
+
+  updateCharacterSuggestions(); // Update search suggestions
+
+
+  console.log("Filtered Characters:", filteredDataSet);
+
+}
+
+
+
+async function randomizeCharacter() {
+  
+
+  if (filteredDataSet.length === 0) {
+    alert("No characters available. Please select a phase first.");
+    return;
+  }
+
+  const randomIdx = Math.floor(Math.random() * (filteredDataSet.length));
+  const randomizedRow = filteredDataSet[randomIdx].split(",");
+
+
+  // const res = await fetch("marvelDataBase.csv");
+  // const res = await fetch("testData.csv");
+  // const text = await res.text();
+  // const lines = text.trim().split("\n");
+  // const headers = lines[0].split(",");
+
+  // const randomIdx = Math.floor(Math.random() * (lines.length - 1)) + 1;
+  // const randomizedRow = lines[randomIdx].split(",");
+  
+  
 
   currentCharacter = {
     name: randomizedRow[0],
@@ -27,11 +74,11 @@ async function randomizeCharacter() {
     phase: randomizedRow[4],
     powerOrigin: randomizedRow[5],
     birthYear: randomizedRow[6],
-    age: randomizedRow[7]
+    colour: randomizedRow[7]
   };
 
   document.getElementById("result").innerHTML = "<p>Done randomizing</p>";
-
+  console.log("Randomized Character:", currentCharacter);
 
   guessedCharacterFacts = null;
   correctFacts.clear();
@@ -56,6 +103,7 @@ async function randomizeCharacter() {
 
 
 
+
 function showCharacterName() {
 
   if (currentCharacter) {
@@ -68,30 +116,27 @@ function showCharacterName() {
 }
 
 
-let characterNames = [];
 
-async function loadCharacterNames() {
-  const res = await fetch("marvelDataBase.csv");
-  // const res = await fetch("testData.csv");
-  const text = await res.text();
-  const lines = text.trim().split("\n");
-  
-  for (let i = 1; i < lines.length; i++) {
-    const row = lines[i].split(",");
-    characterNames.push(row[0]); 
-  }
-
+function updateCharacterSuggestions() {
   const dataList = document.getElementById("characterSuggestions");
-  characterNames.forEach(name => {
+  dataList.innerHTML = ""; // Clear old suggestions
+
+  filteredDataSet.forEach(row => {
+    const columns = row.split(",");
+    const name = columns[0]; 
     const option = document.createElement("option");
     option.value = name;
     dataList.appendChild(option);
   });
+
+  console.log("Updated suggestions:", filteredDataSet.map(row => row.split(",")[0]));
 }
 
 
+
 window.onload = function () {
-  loadCharacterNames();
+  choosePhase();
+  
 
   document.getElementById("searchInput").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
@@ -126,7 +171,7 @@ async function searchData() {
       guessedPhase: row[4],
       guessedPowerOrigin: row[5],
       guessedBirthYear: row[6],
-      guessedAge: row[7],
+      guessedColour: row[7]
       };
 
       console.log("Guessed Character Facts:", guessedCharacterFacts);
@@ -153,7 +198,7 @@ async function searchData() {
           document.getElementById("wrongGenderResult").innerHTML = `<p><strong>${headers[1]}:</strong> ${guessedCharacterFacts.guessedGender}</p>`; 
           document.querySelectorAll(".rectangleWrong")[1].style.display = "flex";
           saveFalseFact(headers[1], guessedCharacterFacts.guessedGender)
-      }
+       }
 
       // Being
       if (currentCharacter && currentCharacter.being === guessedCharacterFacts.guessedBeing) {
@@ -230,6 +275,21 @@ async function searchData() {
         document.querySelectorAll(".rectangleWrong")[6].style.display = "flex";
       }
 
+
+
+      // Colour
+      if (currentCharacter && currentCharacter.colour === guessedCharacterFacts.guessedColour) {
+        document.getElementById("correctColourResult").innerHTML = `<p><strong>${headers[7]}:</strong> ${guessedCharacterFacts.guessedColour}</p>`;
+        document.querySelectorAll(".rectangleCorrect")[7].style.display = "flex"; 
+        saveCorrectFact(headers[7], guessedCharacterFacts.guessedColour);
+      } else {
+        document.getElementById("wrongColourResult").innerHTML = `<p><strong>${headers[7]}:</strong> ${guessedCharacterFacts.guessedColour}</p>`; 
+        document.querySelectorAll(".rectangleWrong")[7].style.display = "flex";
+        saveFalseFact(headers[7], guessedCharacterFacts.guessedColour)
+      }
+
+
+
       
       if (!isNaN(parseInt(guessedCharacterFacts.guessedBirthYear))) {
         updateClosestBirthYears(guessedCharacterFacts.guessedBirthYear, currentCharacter.birthYear);
@@ -244,6 +304,7 @@ async function searchData() {
   if (!foundCharacter) {
     document.getElementById("result").innerHTML = "No match found.";
   }
+  document.getElementById("searchInput").value = "";
 }
 
 
@@ -255,7 +316,9 @@ function saveCorrectFact(label, value) {
   if (!correctFacts.has(entry)) {
     correctFacts.add(entry);
     const li = document.createElement("li");
-    li.textContent = entry;
+    li.innerHTML = `<strong>${label}:</strong> ${value}`;
+    li.style.textAlign = "left";
+
     document.getElementById("correctGuessesList").appendChild(li);
   }
 }
@@ -282,7 +345,8 @@ function updateFalseGuessesList() {
 
     // Create a new list item
     const li = document.createElement("li");
-    li.textContent = `${category}: ${values}`;
+    li.innerHTML = `<strong>${category}:</strong> ${values}`;
+    li.style.textAlign = "left";
     list.appendChild(li);
   }
 }
@@ -322,7 +386,8 @@ function displayClosestBirthYears() {
   if (closestBornAfter) {
     const liBefore = document.createElement("li");
     liBefore.id = "closestBornAfterItem";
-    liBefore.textContent = `Born after: ${closestBornAfter}`;
+    liBefore.innerHTML = `<strong>Born after:</strong> ${closestBornAfter}`;
+    liBefore.style.textAlign = "left";
     list.appendChild(liBefore);
   }
 
@@ -330,7 +395,9 @@ function displayClosestBirthYears() {
   if (closestBornBefore) {
     const liAfter = document.createElement("li");
     liAfter.id = "closestBornBeforeItem";
-    liAfter.textContent = `Born before: ${closestBornBefore}`;
+    liAfter.innerHTML = `<strong>Born before:</strong> ${closestBornBefore}`;
+    liAfter.style.textAlign = "left";
+
     list.appendChild(liAfter);
   }
 }
