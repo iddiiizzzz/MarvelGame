@@ -171,7 +171,8 @@ async function searchData() {
       guessedPhase: row[4],
       guessedPowerOrigin: row[5],
       guessedBirthYear: row[6],
-      guessedColour: row[7]
+      guessedColour: row[7],
+      guessedImage: row[8]
       };
 
       console.log("Guessed Character Facts:", guessedCharacterFacts);
@@ -184,7 +185,11 @@ async function searchData() {
       if (currentCharacter && currentCharacter.name === guessedCharacterFacts.guessedName) {
           document.getElementById("correctNameResult").innerHTML = `<p><strong>${headers[0]}:</strong> ${guessedCharacterFacts.guessedName}</p>`;
           document.querySelectorAll(".rectangleCorrect")[0].style.display = "flex"; 
-      } else {
+          document.getElementById("guessedName").innerText = guessedCharacterFacts.guessedName; // Insert character name
+          document.getElementById("guessedImage").src = guessedCharacterFacts.guessedImage;
+          document.getElementById("congratsPopup").style.display = "block";
+
+        } else {
           document.getElementById("wrongNameResult").innerHTML = `<p><strong>${headers[0]}:</strong> ${guessedCharacterFacts.guessedName}</p>`; 
           document.querySelectorAll(".rectangleWrong")[0].style.display = "flex";
       }
@@ -401,4 +406,11 @@ function displayClosestBirthYears() {
     list.appendChild(liAfter);
   }
 }
+
+
+
+function closePopup() {
+  document.getElementById("congratsPopup").style.display = "none";
+}
+
 
