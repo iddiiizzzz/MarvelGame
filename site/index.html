@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Marvel Character</title>
+    <link rel="stylesheet" href="style.css">
+
+     <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KS19B43THY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KS19B43THY');
+  </script>
+</head> 
+
+
+<body> 
+    <div class="fixedCanvas">
+
+    <!-- <img src="MarvelLogo.png" width="214" height="100" style="position: absolute; left: 40px; top: 40px;"> -->
+
+    <!-- Choose categories -->
+
+
+    <fieldset style="position: absolute; left: 40px; top: 200px;">
+        <button onclick="choosePhase()">Apply Phase Filter</button>
+        <legend>Choose Phase</legend>
+        <div>
+            <input type="checkbox" id="Phase1" name="interest" value="Phase1" checked/>
+            <label for="Phase1">Phase 1</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Phase2" name="interest" value="Phase2" checked/>
+            <label for="Phase2">Phase 2</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Phase3" name="interest" value="Phase3" checked/>
+            <label for="Phase3">Phase 3</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Phase4" name="interest" value="Phase4" checked/>
+            <label for="Phase4">Phase 4</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Xmen" name="interest" value="Xmen" checked/>
+            <label for="Xmen">X-Men</label>
+        </div>
+    </fieldset>
+    
+
+
+    <!-- randomize character --> 
+
+    <div class="TextCenter">
+
+        <h2>Randomize character</h2>
+
+        <!-- <button type="button" onclick="randomizeCharacter(), showCharacterName()">Randomize a Character</button> -->
+        
+        <button type="button" onclick="randomizeCharacter()">Randomize a Character</button>
+        <button type="button" onclick="showQuote()">Show Quote</button>
+        <button type="button" onclick="showMovie()">Show Movie</button>
+        <button type="button" onclick="showCharacterName()">Show Answer</button>
+
+        <div id="result"></div>
+
+    </div>
+
+ 
+    <!-- search bar -->
+
+    <div class="TextCenter">
+        <h1>Guess the Marvel Character</h1>
+
+
+        <input type="text" id="searchInput" list="characterSuggestions" placeholder="Search name..." autocomplete="off" />
+        <datalist id="characterSuggestions"></datalist>
+        <button onclick="searchData()">Search</button>
+
+
+        <!-- Name -->
+        <div class="rectangleCorrect" style="display: none;">
+            <div id="correctNameResult"></div>
+        </div>
+        <div class="rectangleWrong" style="display: none;">
+            <div id="wrongNameResult"></div>
+        </div>
+
+        <div class="centerContainer">
+            <div class="resultGrid">
+                <!-- Gender -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctGenderResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongGenderResult"></div>
+                </div>
+                
+                <!-- Being -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctBeingResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongBeingResult"></div>
+                </div>
+
+            
+
+                <!-- Hero Status -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctHeroStatusResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongHeroStatusResult"></div>
+                </div>
+                
+                <!-- Phase -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctPhaseResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongPhaseResult"></div>
+                </div>
+
+                <!-- Power Origin -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctPowerOriginResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongPowerOriginResult"></div>
+                </div>
+
+                
+
+                <!-- Birth Year -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctBirthYearResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongBirthYearResult"></div> 
+                </div>
+
+
+                <!-- Colour -->
+                <div class="rectangleCorrect" style="display: none;">
+                    <div id="correctColourResult"></div>
+                </div>
+                
+                <div class="rectangleWrong" style="display: none;">
+                    <div id="wrongColourResult"></div>
+                </div>
+
+            </div>
+        </div> 
+
+        <div class="correct-guesses-box">
+            <h3>Correct facts</h3>
+            <ul id="correctGuessesList"></ul>
+        
+            <h3>False facts</h3>
+            <ul id="falseGuessesList"></ul>
+            <p id="closestBornAfterItem"></p>
+            <p id="closestBornBeforeItem"></p>
+        </div>
+
+    </div> 
+
+
+
+ 
+    <div id="congratsPopup" class="popup">
+        <h1>🎉 Congratulations! 🎉</h1>
+        <img id="guessedImage" src="" alt="Character Image" style="width: 150px; height: auto; border-radius: 10px;">
+        <p>You guessed correctly!</p>
+        <p> It was <strong><span id="guessedName"></span></strong>!</p>
+        <button onclick="closePopup()">X</button>
+    </div>
+    
+
+    
+
+    <p><b>Gender:</b> Male, female. </p>
+    <p><b>Being:</b> Human, animal, alien, god.</p>
+    <p><b>Hero Status:</b> Hero, villan, antihero, agent, side character.</p>
+    <p><b>Phase:</b> When they had their first appearance in the MCU.</p>
+    <p><b>Power Origin:</b> Biological, technical, science, no powers.</p>
+    <p><b>Birth Year</b> The year they are born, could also be unknown. Some years are just approximate.</p>
+    <p><b>Colour</b> The skin colour, Human, Blue, Green etc.</p>
+
+    <script src="functions.js"></script>
+</div>
+</body>
+
+</html>
+
+
+<!--  Ctrl + Shift + R för att uppdatera hemsidan efter push till github -->
+
+<!-- 
+To do:
+- Automatisera faserna utan att behöva trycka på knapp
+- Få hint genom att visa vilken film personen är med i
+- Få hint genom att visa ett citat från personen
+- Förklaringarna i en alert istället
+-->
+
+
