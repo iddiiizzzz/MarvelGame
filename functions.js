@@ -10,8 +10,8 @@ let filteredDataSet = [];
 
 
 async function choosePhase () {
-  const res = await fetch("marvelDataBase.csv");
-  // const res = await fetch("testData.csv");
+  // const res = await fetch("marvelDataBase.csv");
+  const res = await fetch("testData.csv");
   const text = await res.text();
   const lines = text.trim().split("\n");
   const headers = lines[0].split(",");
@@ -74,7 +74,9 @@ async function randomizeCharacter() {
     phase: randomizedRow[4],
     powerOrigin: randomizedRow[5],
     birthYear: randomizedRow[6],
-    colour: randomizedRow[7]
+    colour: randomizedRow[7],
+    quote: randomizedRow[9],
+    movie: randomizedRow[10]
   };
 
   document.getElementById("result").innerHTML = "<p>Done randomizing</p>";
@@ -115,6 +117,34 @@ function showCharacterName() {
   }
 }
 
+function showQuote() {
+
+  document.getElementById("result").innerHTML = 
+      `<p>Work in progress...</p>`;
+
+
+  // if (currentCharacter) {
+  //   document.getElementById("result").innerHTML = 
+  //     `<p><strong>Quote:</strong> ${currentCharacter.quote}</p>`;
+  // } else {
+  //   document.getElementById("result").innerHTML = 
+  //     `<p>No character has been randomized yet.</p>`;
+  // }
+}
+
+function showMovie() {
+
+  document.getElementById("result").innerHTML = 
+      `<p>Work in progress...</p>`;
+
+  // if (currentCharacter) {
+  //   document.getElementById("result").innerHTML = 
+  //     `<p><strong>Movie:</strong> ${currentCharacter.movie}</p>`;
+  // } else {
+  //   document.getElementById("result").innerHTML = 
+  //     `<p>No character has been randomized yet.</p>`;
+  // }
+}
 
 
 function updateCharacterSuggestions() {
@@ -150,8 +180,8 @@ window.onload = function () {
 
 async function searchData() {
   const input = document.getElementById("searchInput").value.toLowerCase();
-  const res = await fetch("marvelDataBase.csv");
-  // const res = await fetch("testData.csv");
+  // const res = await fetch("marvelDataBase.csv");
+  const res = await fetch("testData.csv");
   const text = await res.text();
   const lines = text.trim().split("\n");
   const headers = lines[0].split(",");
