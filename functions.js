@@ -10,8 +10,8 @@ let filteredDataSet = [];
 
 
 async function choosePhase () {
-  // const res = await fetch("marvelDataBase.csv");
-  const res = await fetch("testData.csv");
+  const res = await fetch("marvelDataBase.csv");
+  // const res = await fetch("testData.csv");
   const text = await res.text();
   const lines = text.trim().split("\n");
   const headers = lines[0].split(",");
@@ -180,8 +180,8 @@ window.onload = function () {
 
 async function searchData() {
   const input = document.getElementById("searchInput").value.toLowerCase();
-  // const res = await fetch("marvelDataBase.csv");
-  const res = await fetch("testData.csv");
+  const res = await fetch("marvelDataBase.csv");
+  // const res = await fetch("testData.csv");
   const text = await res.text();
   const lines = text.trim().split("\n");
   const headers = lines[0].split(",");
