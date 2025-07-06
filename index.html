@@ -28,26 +28,26 @@
 
 
     <fieldset style="position: absolute; left: 40px; top: 200px;">
-        <button onclick="choosePhase()">Apply Phase Filter</button>
+        <!-- <button onclick="choosePhase()">Apply Phase Filter</button> -->
         <legend>Choose Phase</legend>
         <div>
-            <input type="checkbox" id="Phase1" name="interest" value="Phase1" checked/>
+            <input type="checkbox" id="Phase1" name="interest" value="Phase1" checked onchange="choosePhase()" />
             <label for="Phase1">Phase 1</label>
         </div>
         <div>
-            <input type="checkbox" id="Phase2" name="interest" value="Phase2" checked/>
+            <input type="checkbox" id="Phase2" name="interest" value="Phase2" checked onchange="choosePhase()" />
             <label for="Phase2">Phase 2</label>
         </div>
         <div>
-            <input type="checkbox" id="Phase3" name="interest" value="Phase3" checked/>
+            <input type="checkbox" id="Phase3" name="interest" value="Phase3" checked onchange="choosePhase()" />
             <label for="Phase3">Phase 3</label>
         </div>
         <div>
-            <input type="checkbox" id="Phase4" name="interest" value="Phase4" checked/>
+            <input type="checkbox" id="Phase4" name="interest" value="Phase4" checked onchange="choosePhase()" />
             <label for="Phase4">Phase 4</label>
         </div>
         <div>
-            <input type="checkbox" id="Xmen" name="interest" value="Xmen" checked/>
+            <input type="checkbox" id="Xmen" name="interest" value="Xmen" checked onchange="choosePhase()" />
             <label for="Xmen">X-Men</label>
         </div>
     </fieldset>
@@ -209,7 +209,6 @@
 
 <!-- 
 To do:
-- Automatisera faserna utan att behöva trycka på knapp
 - Få hint genom att visa vilken film personen är med i
 - Få hint genom att visa ett citat från personen
 - Förklaringarna i en alert istället

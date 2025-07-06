@@ -6,7 +6,7 @@ let guessedCharacterFacts = null;
 let correctFacts = new Set();
 let falseFactsMap = {}; 
 let filteredDataSet = [];
-
+ 
 
 
 async function choosePhase () {
