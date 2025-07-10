@@ -77,19 +77,24 @@
 
     <div class="TextCenter">
 
-        <h2>Randomize character</h2>
+        <!-- <h2>Randomize character</h2> -->
 
-        <!-- <button type="button" onclick="randomizeCharacter(), showCharacterName()">Randomize a Character</button> -->
-        
+        <p>  </p>
         <button type="button" onclick="randomizeCharacter()">Randomize a Character</button>
+        
+        
+        <div id="resultCharacter"></div>
+
+    </div>
+ 
+    <div class="TextCenter">
+        <p>  </p>
+
         <button type="button" onclick="showQuote()">Show Quote</button>
         <button type="button" onclick="showMovie()">Show Movie</button>
         <button type="button" onclick="showCharacterName()">Show Answer</button>
-
         <div id="result"></div>
-
     </div>
-
  
     <!-- search bar -->
 
@@ -100,6 +105,9 @@
         <input type="text" id="searchInput" list="characterSuggestions" placeholder="Search name..." autocomplete="off" />
         <datalist id="characterSuggestions"></datalist>
         <button onclick="searchData()">Search</button>
+        <p id="searchCounter">Guesses made: 0</p>
+
+
 
 
         <!-- Name -->
@@ -208,17 +216,6 @@
     
 
     
-
-    
-
-
-    <!-- <p><b>Gender:</b> Male, female. </p>
-    <p><b>Being:</b> Human, animal, alien, god.</p>
-    <p><b>Hero Status:</b> Hero, villan, antihero, agent, side character.</p>
-    <p><b>Phase:</b> When they had their first appearance in the MCU.</p>
-    <p><b>Power Origin:</b> Biological, technical, science, no powers.</p>
-    <p><b>Birth Year</b> The year they are born, could also be unknown. Some years are just approximate.</p>
-    <p><b>Colour</b> The skin colour, Human, Blue, Green etc.</p> -->
 
     <script src="functions.js"></script>
 </div>

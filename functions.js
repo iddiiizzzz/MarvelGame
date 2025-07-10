@@ -6,6 +6,7 @@ let guessedCharacterFacts = null;
 let correctFacts = new Set();
 let falseFactsMap = {}; 
 let filteredDataSet = [];
+let searchCount = 0;
  
 
 
@@ -45,6 +46,8 @@ async function choosePhase () {
 
 async function randomizeCharacter() {
   
+  searchCount = 0;
+  document.getElementById("searchCounter").innerText = "Guesses: 0";
 
   if (filteredDataSet.length === 0) {
     alert("No characters available. Please select a phase first.");
@@ -79,7 +82,7 @@ async function randomizeCharacter() {
     movie: randomizedRow[10]
   };
 
-  document.getElementById("result").innerHTML = "<p>Done randomizing</p>";
+  document.getElementById("resultCharacter").innerHTML = "<p>Done randomizing</p>";
   console.log("Randomized Character:", currentCharacter);
 
   guessedCharacterFacts = null;
@@ -93,7 +96,7 @@ async function randomizeCharacter() {
 
 
   // Clear the displayed results
-  document.getElementById("result").innerHTML = "<p>Done randomizing</p>";
+  document.getElementById("resultCharacter").innerHTML = "<p>Done randomizing</p>";
   document.getElementById("searchInput").value = ""; // Clear input field
 
   document.getElementById("correctGuessesList").innerHTML = ""; // Clear correct guesses list
@@ -179,6 +182,8 @@ window.onload = function () {
 
 
 async function searchData() {
+  searchCount++;
+  document.getElementById("searchCounter").innerText = `Guesses: ${searchCount}`;
   const input = document.getElementById("searchInput").value.toLowerCase();
   const res = await fetch("marvelDataBase.csv");
   // const res = await fetch("testData.csv");
