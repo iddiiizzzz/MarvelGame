@@ -104,8 +104,10 @@
 
         <input type="text" id="searchInput" list="characterSuggestions" placeholder="Search name..." autocomplete="off" />
         <datalist id="characterSuggestions"></datalist>
-        <button onclick="searchData()">Search</button>
+        <button onclick="startTimer(); searchData()">Search</button>
         <p id="searchCounter">Guesses made: 0</p>
+        <p id="timerDisplay">Time: 0s</p>
+
 
 
 

@@ -7,6 +7,9 @@ let correctFacts = new Set();
 let falseFactsMap = {}; 
 let filteredDataSet = [];
 let searchCount = 0;
+let timer;               // Reference to the timer interval
+let timeElapsed = 0;     // Elapsed time in seconds
+let timerStarted = false; // Prevents restarting timer on every search
  
 
 
@@ -48,6 +51,7 @@ async function randomizeCharacter() {
   
   searchCount = 0;
   document.getElementById("searchCounter").innerText = "Guesses made: 0";
+  resetTimer();
 
   if (filteredDataSet.length === 0) {
     alert("No characters available. Please select a phase first.");
@@ -223,7 +227,8 @@ async function searchData() {
           document.getElementById("guessedName").innerText = guessedCharacterFacts.guessedName; // Insert character name
           document.getElementById("guessedImage").src = guessedCharacterFacts.guessedImage;
           document.getElementById("congratsPopup").style.display = "block";
-
+          stopTimer();
+          
         } else {
           document.getElementById("wrongNameResult").innerHTML = `<p><strong>${headers[0]}:</strong> ${guessedCharacterFacts.guessedName}</p>`; 
           document.querySelectorAll(".rectangleWrong")[0].style.display = "flex";
@@ -336,7 +341,7 @@ async function searchData() {
         displayClosestBirthYears();
       }
       
-      foundCharacter = true;
+      foundCharacter = true;     
       break;
     }
   }
@@ -449,3 +454,23 @@ function closePopup() {
 }
 
 
+function startTimer() {
+  if (timerStarted) return; // Only start once
+  timerStarted = true;
+
+  timer = setInterval(() => {
+    timeElapsed++;
+    document.getElementById("timerDisplay").textContent = `Time: ${timeElapsed}s`;
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timer);
+  timerStarted = false;
+}
+
+function resetTimer() {
+  stopTimer();
+  timeElapsed = 0;
+  document.getElementById("timerDisplay").textContent = `Time: 0s`;
+}
