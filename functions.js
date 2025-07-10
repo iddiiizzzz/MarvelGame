@@ -47,7 +47,7 @@ async function choosePhase () {
 async function randomizeCharacter() {
   
   searchCount = 0;
-  document.getElementById("searchCounter").innerText = "Guesses: 0";
+  document.getElementById("searchCounter").innerText = "Guesses made: 0";
 
   if (filteredDataSet.length === 0) {
     alert("No characters available. Please select a phase first.");

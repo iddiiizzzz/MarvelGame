@@ -193,7 +193,7 @@ button {
   width: 200px;
   height: 100px;
   margin: 10px auto;
-  border: 2px solid green;
+  border: 2px solid rgb(1, 108, 1);
   background-color: #004e00;
   box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
   border-radius: 10px; /* rounded edges */
