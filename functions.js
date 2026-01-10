@@ -82,8 +82,8 @@ async function randomizeCharacter() {
     powerOrigin: randomizedRow[5],
     birthYear: randomizedRow[6],
     colour: randomizedRow[7],
-    quote: randomizedRow[9],
-    movie: randomizedRow[10]
+    movie: randomizedRow[9],
+    quote: randomizedRow[10]
   };
 
   document.getElementById("resultCharacter").innerHTML = "<p>Done randomizing</p>";
