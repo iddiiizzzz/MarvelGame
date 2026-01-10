@@ -141,16 +141,16 @@ function showQuote() {
 
 function showMovie() {
 
-  document.getElementById("result").innerHTML = 
-      `<p>Work in progress...</p>`;
+  // document.getElementById("result").innerHTML = 
+  //     `<p>Work in progress...</p>`;
 
-  // if (currentCharacter) {
-  //   document.getElementById("result").innerHTML = 
-  //     `<p><strong>Movie:</strong> ${currentCharacter.movie}</p>`;
-  // } else {
-  //   document.getElementById("result").innerHTML = 
-  //     `<p>No character has been randomized yet.</p>`;
-  // }
+  if (currentCharacter) {
+    document.getElementById("result").innerHTML = 
+      `<p><strong>Movie:</strong> ${currentCharacter.movie}</p>`;
+  } else {
+    document.getElementById("result").innerHTML = 
+      `<p>No character has been randomized yet.</p>`;
+  }
 }
 
 

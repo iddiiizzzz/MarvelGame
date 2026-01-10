@@ -24,18 +24,18 @@
 
     <!-- <img src="MarvelLogo.png" width="214" height="100" style="position: absolute; left: 40px; top: 40px;"> -->
 
-    <!-- Choose categories -->
-
+    
+<!-- Alterts -->
     <button onclick="alert('1. Choose which phases you want to include characters from.\n' +
-    '2. Randomize a character.\n' +
-    '3. Type a guess in the serch bar and make a guess. Suggestions will appear.\n' +
-    '4. Use the category info to figure out the correct character. The blue box will save the information about the character from all previous guesses. \n' +
-    '\n'+
-    'If you need a hint, you can get which movie the character first appeard in by clicking the Show Movie-button. \n' +
-    'If you give up, you can click on the Show Answer-button to get the answer.'
+        '2. Randomize a character.\n' +
+        '3. Type a guess in the serch bar and make a guess. Suggestions will appear.\n' +
+        '4. Use the category info to figure out the correct character. The blue box will save the information about the character from all previous guesses. \n' +
+        '\n'+
+        'If you need a hint, you can get which movie the character first appeard in by clicking the Show Movie-button. \n' +
+        'If you give up, you can click on the Show Answer-button to get the answer.'
     )" style="position: absolute; left: 40px; top: 30px;">How to Play</button>
 
-<button onclick="alert(
+    <button onclick="alert(
         'Gender: Male, female.\n' +
         'Being: Human, animal, alien, god, AI.\n' +
         'Hero Status: Hero, villain, antihero, agent, side character.\n' +
@@ -46,8 +46,9 @@
     )" style="position: absolute; left: 40px; top: 55px;">Category Info</button>
 
 
+
+<!-- Checkboxes for phases -->
     <fieldset style="position: absolute; left: 40px; top: 200px;">
-        <!-- <button onclick="choosePhase()">Apply Phase Filter</button> -->
         <legend>Choose Phase</legend>
         <div>
             <input type="checkbox" id="Phase1" name="interest" value="Phase1" checked onchange="choosePhase()" />
@@ -74,7 +75,6 @@
 
 
     <!-- randomize character --> 
-
     <div class="TextCenter">
 
         <!-- <h2>Randomize character</h2> -->
@@ -87,6 +87,7 @@
 
     </div>
  
+    <!-- Other buttons -->
     <div class="TextCenter">
         <p>  </p>
 
@@ -97,7 +98,6 @@
     </div>
  
     <!-- search bar -->
-
     <div class="TextCenter">
         <h1>Guess the Marvel Character</h1>
 
@@ -207,7 +207,7 @@
 
 
 
- 
+ <!-- Popup -->
     <div id="congratsPopup" class="popup">
         <h1>🎉 Congratulations! 🎉</h1>
         <img id="guessedImage" src="" alt="Character Image" style="width: 150px; height: auto; border-radius: 10px;">
@@ -232,7 +232,6 @@
 To do:
 - Få hint genom att visa vilken film personen är med i
 - Få hint genom att visa ett citat från personen
-- Count på antal gissningar gjorda
 -->
 
 
